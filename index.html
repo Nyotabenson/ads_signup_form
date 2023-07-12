@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv= " X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meetup</title>
+    <link rel="stylesheet" href="style.css">
+</head>  
+<body>
+    <div class="background"></div>
+    <div class="contact">
+        <h1 class="contact-title">Africa Data School Community</h1>
+        <p class="contact-description">Programmers have united to form an invincible community, dedicated to continuously enhancing skills and expertise.</p>
+        <p class="explanation">-Meetup at Nairobi Garage</p>
+        <p class="explanation3">Those attending:</p>
+        <p class="explanation2">Register here</p>
+        <form action=""name="meetup">
+            <div class="form-group">
+                <label for="email">Name</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div class="form-group">
+                <label for="tell">Phone Number</label>
+                <input type="tel" name="tell" id="tell">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea name="message" id="message" cols="30" rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzg5OysvM1cIZmDmIDX1iybh-n5ug-7q_qUeBMUM-nFHoLC1YiLPn_HXG_b7vpy0rTDHA/exec'
+        const form = document.forms['meetup']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                form.reset()
+                alert('Success!')
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>
+</html>
